@@ -90,28 +90,28 @@ export default function App() {
   };
 
   return (
-    <div dir="rtl" className="font-[Cairo] bg-gray-100">
+    <div dir="rtl" className="min-h-screen overflow-x-hidden bg-gray-100 font-[Cairo]">
       {currentPage === "contact" ? (
         // صفحة التواصل معنا
         <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-          <div className="bg-[#0b1a2b] text-white flex items-center px-8 py-4">
+          <div className="flex flex-col gap-4 bg-[#0b1a2b] px-4 py-4 text-white sm:flex-row sm:items-center sm:px-6 lg:px-8">
             <button
               onClick={() => setCurrentPage("home")}
-              className="text-sm bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded text-white font-bold"
+              className="w-full rounded bg-orange-500 px-4 py-2 text-sm font-bold text-white hover:bg-orange-600 sm:w-auto"
             >
               ← العودة للرئيسية
             </button>
             <div className="flex-1 text-center">
-              <h1 className="text-3xl font-extrabold">
+              <h1 className="text-2xl font-extrabold sm:text-3xl">
                 <span className="text-yellow-400">تواصل</span> معنا
               </h1>
             </div>
-            <div className="w-24"></div>
+            <div className="hidden w-24 sm:block"></div>
           </div>
 
-          <div className="p-10">
+          <div className="px-4 py-6 sm:px-6 sm:py-8 lg:p-10">
             <div className="max-w-2xl mx-auto">
-              <div className="text-center mb-12">
+              <div className="mb-10 text-center sm:mb-12">
                 <h2 className="text-4xl font-bold text-gray-800 mb-4">نحن هنا لمساعدتك</h2>
                 <p className="text-xl text-gray-600">تواصل معنا عبر أحد القنوات التالية</p>
               </div>
@@ -177,24 +177,24 @@ export default function App() {
       ) : currentPage === "finance" ? (
         // صفحة التمويل
         <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-          <div className="bg-[#0b1a2b] text-white flex items-center px-8 py-4">
+          <div className="flex flex-col gap-4 bg-[#0b1a2b] px-4 py-4 text-white sm:flex-row sm:items-center sm:px-6 lg:px-8">
             <button
               onClick={() => setCurrentPage(searchResults.length ? "results" : "home")}
-              className="text-sm bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded text-white font-bold"
+              className="w-full rounded bg-orange-500 px-4 py-2 text-sm font-bold text-white hover:bg-orange-600 sm:w-auto"
             >
               ← العودة
             </button>
             <div className="flex-1 text-center">
-              <h1 className="text-3xl font-extrabold">
+              <h1 className="text-2xl font-extrabold sm:text-3xl">
                 <span className="text-yellow-400">تمويل</span> السيارة
               </h1>
             </div>
-            <div className="w-24"></div>
+            <div className="hidden w-24 sm:block"></div>
           </div>
 
-          <div className="p-10">
+          <div className="px-4 py-6 sm:px-6 sm:py-8 lg:p-10">
             {!selectedCar ? (
-              <div className="text-center py-20">
+              <div className="py-16 text-center sm:py-20">
                 <p className="text-gray-600 text-xl mb-4">من فضلك اختر سيارة من نتائج البحث أولاً.</p>
                 <button
                   onClick={() => (searchResults.length ? setCurrentPage("results") : resetToHome())}
@@ -216,8 +216,8 @@ export default function App() {
 
                 return (
                   <>
-                    <div className="grid md:grid-cols-2 gap-8">
-                      <div className="bg-white rounded-2xl shadow p-6">
+                    <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+                      <div className="rounded-2xl bg-white p-5 shadow sm:p-6">
                         <h2 className="text-2xl font-bold mb-4">تفاصيل السيارة</h2>
                         <img
                           src={getCarImage(selectedCar)}
@@ -226,7 +226,7 @@ export default function App() {
                             target.onerror = null;
                             target.src = selectedCar.image;
                           }}
-                          className="w-full h-56 object-cover rounded-lg mb-4"
+                          className="mb-4 h-48 w-full rounded-lg object-cover sm:h-56"
                           alt={`${selectedCar.brand} ${selectedCar.model}`}
                         />
                         <p className="mb-1">الماركة والموديل: {selectedCar.brand} {selectedCar.model}</p>
@@ -235,7 +235,7 @@ export default function App() {
                         <p className="mb-1">المواصفات: {selectedCar.specs}</p>
                       </div>
 
-                      <div className="bg-white rounded-2xl shadow p-6">
+                      <div className="rounded-2xl bg-white p-5 shadow sm:p-6">
                         <h2 className="text-2xl font-bold mb-4">حاسبة التمويل</h2>
                         <div className="mb-4">
                           <label className="block mb-2">الدفعة الأولى (جنيه)</label>
@@ -278,16 +278,16 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="mt-8 flex gap-3">
+                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                       <button
                         onClick={() => setCurrentPage("results")}
-                        className="px-5 py-3 bg-gray-300 hover:bg-gray-400 rounded font-semibold"
+                        className="rounded bg-gray-300 px-5 py-3 font-semibold hover:bg-gray-400"
                       >
                         العودة لنتائج البحث
                       </button>
                       <button
                         onClick={resetToHome}
-                        className="px-5 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded font-semibold"
+                        className="rounded bg-orange-500 px-5 py-3 font-semibold text-white hover:bg-orange-600"
                       >
                         العودة للرئيسية
                       </button>
@@ -306,23 +306,23 @@ export default function App() {
         // صفحة نتائج البحث المنفصلة
         <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
           {/* Navbar */}
-          <div className="bg-[#0b1a2b] text-white flex items-center px-8 py-4">
+          <div className="flex flex-col gap-4 bg-[#0b1a2b] px-4 py-4 text-white sm:flex-row sm:items-center sm:px-6 lg:px-8">
             <button 
               onClick={resetToHome}
-              className="text-sm bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded text-white font-bold"
+              className="w-full rounded bg-orange-500 px-4 py-2 text-sm font-bold text-white hover:bg-orange-600 sm:w-auto"
             >
               ← العودة للرئيسية
             </button>
             <div className="flex-1 text-center">
-              <h1 className="text-3xl font-extrabold">
+              <h1 className="text-2xl font-extrabold sm:text-3xl">
                 <span className="text-yellow-400">المــ</span>يــــداني
               </h1>
             </div>
-            <div className="w-24"></div>
+            <div className="hidden w-24 sm:block"></div>
           </div>
 
           {/* Search Results Header */}
-          <div className="p-10">
+          <div className="px-4 py-6 sm:px-6 sm:py-8 lg:p-10">
             <h2 className="text-4xl font-bold text-center mb-2">نتائج البحث</h2>
             <p className="text-center text-gray-600 text-lg mb-8">
               البحث عن: <span className="font-bold text-blue-600">{selectedBrand} {selectedModel}</span>
@@ -333,9 +333,9 @@ export default function App() {
                 <p className="text-center text-gray-500 mb-8">
                   وجدنا <span className="font-bold text-orange-500">{searchResults.length}</span> سيارة مطابقة
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
                   {searchResults.map((car, index) => (
-                    <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
+                    <div key={index} className="overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
                       <div className="h-48 overflow-hidden bg-gray-200">
                         <img
                           src={car.image}
@@ -348,7 +348,7 @@ export default function App() {
                           alt={`${car.brand} ${car.model}`}
                         />
                       </div>
-                      <div className="p-6">
+                      <div className="p-5 sm:p-6">
                         <h3 className="font-bold text-xl mb-2">{car.brand}</h3>
                         <h4 className="text-lg text-blue-600 font-semibold mb-3">{car.model}</h4>
                         <p className="text-sm text-gray-600 mb-2">📅 سنة {car.year}</p>
@@ -356,7 +356,7 @@ export default function App() {
                         <div className="border-t pt-3 mb-3">
                           <p className="text-sm text-blue-600 font-semibold">⚡ السرعة: {car.speed} كم/س</p>
                         </div>
-                        <p className="text-orange-500 font-bold text-2xl mb-4">
+                        <p className="mb-4 text-xl font-bold text-orange-500 sm:text-2xl">
                           {car.price.toLocaleString()} جنيه
                         </p>
                         <button
@@ -397,8 +397,8 @@ export default function App() {
         <>
 
       {/* Navbar */}
-      <div className="bg-[#0b1a2b] text-white flex items-center px-8 py-4">
-        <div className="flex-1 flex justify-center gap-10 text-base font-semibold">
+      <div className="flex flex-col gap-4 bg-[#0b1a2b] px-4 py-4 text-white sm:px-6 lg:flex-row lg:items-center lg:px-8">
+        <div className="order-2 flex flex-1 flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-semibold sm:text-base lg:order-1">
           {navItems.map((item, i) => (
             <button
               key={i}
@@ -409,7 +409,7 @@ export default function App() {
                   setCurrentPage("home");
                 }
               }}
-              className="relative group"
+              className="relative group whitespace-nowrap"
             >
               <span className="group-hover:text-yellow-400 transition duration-300">
                 {item}
@@ -419,7 +419,7 @@ export default function App() {
           ))}
         </div>
 
-        <div className="text-3xl md:text-4xl font-extrabold tracking-widest ml-6">
+        <div className="order-1 text-center text-3xl font-extrabold tracking-widest sm:text-4xl lg:order-2 lg:ml-6">
           <span className="text-yellow-400">المــ</span>
           <span className="mx-1">يــــ</span>
           <span>داني</span>
@@ -428,7 +428,7 @@ export default function App() {
 
       {/* Hero */}
       <div
-        className="relative h-[520px]"
+        className="relative min-h-[640px] lg:h-[520px] lg:min-h-0"
         style={{
           backgroundImage: "url('/photos/silver-suv.jpg.png')",
           backgroundSize: "cover",
@@ -437,19 +437,19 @@ export default function App() {
       >
         <div className="absolute inset-0 bg-black/50"></div>
 
-        <div className="absolute inset-0 flex items-center px-16 text-white z-10">
-          <div className="max-w-xl text-right">
-            <h1 className="text-6xl font-extrabold mb-4">
+        <div className="absolute inset-0 z-10 flex items-center px-4 py-10 text-white sm:px-6 lg:px-16">
+          <div className="w-full max-w-3xl text-right">
+            <h1 className="mb-4 text-4xl font-extrabold sm:text-5xl lg:text-6xl">
               <span className="text-yellow-400">المــ</span>يــــداني
             </h1>
 
-            <p className="text-lg mb-6">
+            <p className="mb-6 max-w-2xl text-base sm:text-lg">
               دليلك لبيع وشراء بأفضل الأسعار
             </p>
 
-            <div className="bg-white p-2 rounded-xl flex gap-2 items-center shadow-lg w-fit">
+            <div className="flex w-full max-w-3xl flex-col gap-3 rounded-2xl bg-white p-3 shadow-lg sm:p-4 lg:flex-row lg:flex-wrap lg:items-center">
               <select 
-                className="px-3 py-2 rounded text-black border"
+                className="min-h-[48px] w-full rounded-lg border px-3 py-2 text-black lg:flex-1"
                 value={selectedBrand}
                 onChange={(e) => {
                   setSelectedBrand(e.target.value);
@@ -486,7 +486,7 @@ export default function App() {
                 <option>Dongfeng</option>
               </select>
               <select 
-                className="px-3 py-2 rounded text-black border"
+                className="min-h-[48px] w-full rounded-lg border px-3 py-2 text-black lg:flex-1"
                 value={selectedModel}
                 onChange={(e) => setSelectedModel(e.target.value)}
               >
@@ -554,7 +554,7 @@ export default function App() {
                   </>
                 )}
               </select>
-              <select className="px-3 py-2 rounded text-black border">
+              <select className="min-h-[48px] w-full rounded-lg border px-3 py-2 text-black lg:flex-1">
                 <option>اختر معرضك</option>
                 <option>Toyota Egypt</option>
                 <option>Nissan Egypt</option>
@@ -568,7 +568,7 @@ export default function App() {
               <button 
                 onClick={handleSearch}
                 disabled={isSearching}
-                className="bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 px-6 py-2 rounded text-white font-bold whitespace-nowrap flex items-center gap-2"
+                className="flex min-h-[48px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-orange-500 px-6 py-2 font-bold text-white hover:bg-orange-600 disabled:bg-gray-400 lg:w-auto"
               >
                 {isSearching ? "جاري البحث..." : "ابحث الآن"}
                 <Search size={18} />
@@ -578,8 +578,8 @@ export default function App() {
         </div>
 
         {/* Services Bar */}
-        <div className="absolute bottom-[-50px] left-1/2 -translate-x-1/2 w-[92%] z-20">
-          <div className="bg-white rounded-2xl shadow-xl flex justify-between items-center p-6">
+        <div className="absolute inset-x-0 bottom-0 z-20 translate-y-1/2 px-4 sm:px-6">
+          <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 rounded-2xl bg-white p-5 shadow-xl sm:grid-cols-2 sm:p-6 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-center">
 
             <div className="flex items-center gap-3 cursor-default select-none">
               <Wrench size={40} className="text-orange-500" />
@@ -589,7 +589,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="w-px h-12 bg-gray-300"></div>
+            <div className="hidden h-12 w-px bg-gray-300 lg:block"></div>
 
             <div className="flex items-center gap-3 cursor-default select-none">
               <FileText size={40} className="text-blue-500" />
@@ -599,7 +599,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="w-px h-12 bg-gray-300"></div>
+            <div className="hidden h-12 w-px bg-gray-300 lg:block"></div>
 
             <div className="flex items-center gap-3 cursor-default select-none">
               <Car size={40} className="text-red-500" />
@@ -613,16 +613,16 @@ export default function App() {
         </div>
       </div>
 
-      <div className="h-28"></div>
+      <div className="h-48 sm:h-40 lg:h-28"></div>
 
       {/* Cars */}
-      <div className="p-10">
+      <div className="px-4 py-8 sm:px-6 lg:p-10">
         <h2 className="text-2xl font-bold text-center mb-6">أحدث السيارات</h2>
 
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
 
           {/* Porsche */}
-          <div onClick={() => setActiveCar("porsche")} className="bg-white rounded-2xl shadow hover:shadow-lg transition p-4 cursor-pointer">
+          <div onClick={() => setActiveCar("porsche")} className="cursor-pointer rounded-2xl bg-white p-4 shadow transition hover:shadow-lg">
             <div className="h-40 rounded mb-4 overflow-hidden">
               <img src="/photos/porsche356.png" className="w-full h-full object-cover" />
             </div>
@@ -632,7 +632,7 @@ export default function App() {
           </div>
 
           {/* Beetle */}
-          <div onClick={() => setActiveCar("beetle")} className="bg-white rounded-2xl shadow hover:shadow-lg transition p-4 cursor-pointer">
+          <div onClick={() => setActiveCar("beetle")} className="cursor-pointer rounded-2xl bg-white p-4 shadow transition hover:shadow-lg">
             <div className="h-40 rounded mb-4 overflow-hidden">
               <img src="/photos/Vibrant-Beetle.png" className="w-full h-full object-cover" />
             </div>
@@ -642,7 +642,7 @@ export default function App() {
           </div>
 
           {/* Hyundai */}
-          <div onClick={() => setActiveCar("hyundai")} className="bg-white rounded-2xl shadow hover:shadow-lg transition p-4 cursor-pointer">
+          <div onClick={() => setActiveCar("hyundai")} className="cursor-pointer rounded-2xl bg-white p-4 shadow transition hover:shadow-lg">
             <div className="h-40 rounded mb-4 overflow-hidden">
               <img src="/photos/Hyundai-Elantra.png" className="w-full h-full object-cover" />
             </div>
@@ -652,7 +652,7 @@ export default function App() {
           </div>
 
           {/* Mini Cooper */}
-          <div onClick={() => setActiveCar("mini")} className="bg-white rounded-2xl shadow hover:shadow-lg transition p-4 cursor-pointer">
+          <div onClick={() => setActiveCar("mini")} className="cursor-pointer rounded-2xl bg-white p-4 shadow transition hover:shadow-lg">
             <div className="h-40 rounded mb-4 overflow-hidden">
               <img src="/photos/Mini-Cooper.png" className="w-full h-full object-cover" />
             </div>
@@ -665,11 +665,11 @@ export default function App() {
       </div>
 
       {/* Offers */}
-      <div className="px-10 pb-10">
+      <div className="px-4 pb-8 sm:px-6 lg:px-10 lg:pb-10">
         <h2 className="text-2xl font-bold text-center mb-6">عروض مميزة</h2>
 
-        <div className="grid grid-cols-2 gap-6">
-          <div className="rounded-2xl overflow-hidden shadow hover:scale-105 transition">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-2xl shadow transition hover:scale-[1.02]">
             <img
               src="/photos/money-without-deposit.png"
               onClick={() => setCurrentPage("finance")}
@@ -677,19 +677,19 @@ export default function App() {
             />
           </div>
 
-          <div className="rounded-2xl overflow-hidden shadow hover:scale-105 transition">
+          <div className="overflow-hidden rounded-2xl shadow transition hover:scale-[1.02]">
             <img src="/photos/caroffer.jpg" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
 
       {/* Services */}
-      <div className="p-10">
+      <div className="px-4 py-8 sm:px-6 lg:p-10">
         <h2 className="text-2xl font-bold text-center mb-6">خدماتنا</h2>
 
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {[{name: "تأمين السيارات", icon: Shield}, {name: "تسجيل وترخيص", icon: CheckCircle}, {name: "تمويل السيارات", icon: Zap}, {name: "فحص السيارات", icon: FileText}].map((item,i)=>(
-            <div key={i} className="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition">
+            <div key={i} className="rounded-xl bg-white p-6 text-center shadow transition hover:shadow-lg">
               <div className="mb-2">{<item.icon size={32} className="mx-auto text-orange-500" />}</div>
               <p className="font-semibold">{item.name}</p>
             </div>
@@ -704,12 +704,12 @@ export default function App() {
 
       {/* 🔥 Overlay */}
       {activeCar && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="bg-white w-[90%] max-w-3xl rounded-2xl p-8 relative shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+          <div className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white p-5 shadow-2xl sm:p-8">
             {/* Close Button */}
             <button
               onClick={() => setActiveCar(null)}
-              className="absolute top-4 left-4 text-gray-600 hover:text-red-500 text-2xl font-bold"
+              className="absolute left-4 top-4 text-2xl font-bold text-gray-600 hover:text-red-500"
             >
               ✕
             </button>
